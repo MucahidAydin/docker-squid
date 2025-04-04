@@ -1,4 +1,6 @@
-![Docker Pulls](https://img.shields.io/docker/pulls/mucahidaydin/proxy.svg)
+<a href="https://hub.docker.com/r/mucahidaydin/proxy">
+    <img src="https://img.shields.io/docker/pulls/mucahidaydin/proxy.svg" alt="Docker Pulls">
+</a>
 
 # Docker | Squid Proxy
 This project allows you to run a Squid proxy server using Docker Compose or Docker.
