@@ -1,5 +1,5 @@
 <a href="https://hub.docker.com/r/mucahidaydin/proxy">
-    <img src="https://img.shields.io/docker/pulls/mucahidaydin/proxy.svg" alt="Docker Pulls">
+    <img src="https://img.shields.io/docker/pulls/mucahidaydin/proxy" alt="Docker Pulls">
 </a>
 
 # Docker | Squid Proxy
@@ -33,7 +33,7 @@ docker run -e USERNAME=myusername -e PASSWORD=mypassword -p 3128:3128 my-proxy
 ```
 
 #### Option 2: Run with Docker Compose
-If using Docker Compose, update your `docker compose.yml` file as follows:
+If using Docker Compose, update your `docker-compose.yaml` file as follows:
 
 ```yaml
 environment:
