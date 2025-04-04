@@ -1,30 +1,59 @@
-# Docker Compose | Squid
-
-This project allows you to run Squid proxy server using Docker Compose.
+# Docker | Squid Proxy
+This project allows you to run a Squid proxy server using Docker Compose or Docker.
 
 ## Getting Started
+Follow the steps below to set up and run the proxy server.
 
-To start using the project, follow the steps below:
+### 1. Clone the Project
+Open your terminal and run the following commands:
 
-1. Open your terminal and clone the project:
-   ```sh
-   git clone https://github.com/MucahidAydin/docker-squid.git
-   cd docker-squid
-2. To create a new user, follow these steps:
-    ```sh
-    cd conf/users
-    chmod +x ./user_create.sh
-    ./user_create.sh
-    ```
-3. Start the Squid proxy by running the following command:
-    ```sh
-    docker-compose up -d
-    ```
-4. Allow the port for Squid proxy to be accessible by running the following command:
-    ```sh
-    sudo ufw allow 47477/tcp
-    ```
-5. You can test the proxy by using the following command:
-    ```sh
-    curl -x <user>:<password>@<your-ip>:47477 https://httpbin.org/ip
-    ```
+```sh
+git clone https://github.com/MucahidAydin/docker-squid.git
+cd docker-squid
+```
+
+### 2. Start the Proxy Server
+You can start the proxy server using either `docker build` or `docker compose`.
+
+#### Option 1: Run with Docker
+First, build the image:
+
+```sh
+docker build -t my-proxy .
+```
+
+Then start the proxy server:
+
+```sh
+docker run -e USERNAME=myusername -e PASSWORD=mypassword -p 3128:3128 my-proxy
+```
+
+#### Option 2: Run with Docker Compose
+If using Docker Compose, update your `docker compose.yml` file as follows:
+
+```yaml
+environment:
+  - USERNAME=myusername
+  - PASSWORD=mypassword
+```
+
+Then start the service:
+
+```sh
+docker compose up -d
+```
+
+### 3. Allow the Proxy Port
+Ensure that the proxy server port is accessible by running:
+
+```sh
+sudo ufw allow 3128/tcp
+```
+
+### 4. Test the Proxy
+You can verify if the proxy is working using:
+
+```sh
+curl -x myusername:mypassword@<server-ip>:3128 https://httpbin.org/ip
+```
+* Replace `<server-ip>` with your actual server IP.

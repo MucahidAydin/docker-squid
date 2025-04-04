@@ -1,11 +1,12 @@
-version: "3"
 services:
-  squid:
-    image: ubuntu/squid
-    volumes:
-      - ./conf/squid/squid.conf:/etc/squid/squid.conf
-      - ./conf/users/user.htpasswd:/etc/squid/.htpasswd
-      - ./conf/error_page/ERR_ACCESS_DENIED:/usr/share/squid/errors/templates/ERR_ACCESS_DENIED
+  proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - USERNAME=myusername
+      - PASSWORD=mypassword
+
     restart: always
     deploy:
       resources:
@@ -16,5 +17,4 @@ services:
         #   cpus: '0.60'
         #   memory: 300M
     ports:
-      - "47477:3128"
-    # http://user:password@ip:47477
+      - "3128:3128"
